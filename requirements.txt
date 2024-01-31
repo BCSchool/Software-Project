@@ -1,2 +1,1 @@
-python version 3.12.1
-django version 5.0.1
+Django==5.0.1
