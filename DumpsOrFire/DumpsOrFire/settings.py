@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,13 +22,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5glm856^xv)j-dg2uply#ps*q^x_v^su6q_cekow0d6s(+c@8='
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Spotify
+SOCIAL_AUTH_SPOTIFY_KEY = os.environ.get('SPOTIFY_CLIENT_KEY')
+SOCIAL_AUTH_SPOTIFY_SECRET = os.environ.get('SPOTIFY_CLIENT_SECRET')
+SOCIAL_AUTH_SPOTIFY_SCOPE = ['user-read-email', ]
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.spotify.SpotifyOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+)
+# end Spotify
 
 # Application definition
 
