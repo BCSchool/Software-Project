@@ -6,6 +6,16 @@ __pycache__/
 .Python
 *.pyc
 
+# binary
+*.exe
+*.dll
+*.so
+*.o
+*.a
+*.obj
+*.bin
+*.jar
+
 # Django related
 *.log
 local_settings.py
