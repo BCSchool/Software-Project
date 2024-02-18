@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlist Rating</title>
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  .container {
-    display: flex;
-    justify-content: space-between;
-  }
-  .input-section {
-    margin-right: 20px;
-  }
-  .input-section input {
-    width: 200px;
-    padding: 5px;
-  }
-  .result-section {
-    width: 300px;
-    height: 200px;
-    border: 1px solid #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Rating App</title>
+    <!-- Include Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .rating-box {
+            border: 1px solid #000;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="input-section">
-      <label for="playlist-url">Enter playlist URL:</label><br>
-      <input type="text" id="playlist-url" name="playlist-url">
+    <div class="container">
+        <h1>Playlist Rating Generator</h1>
+
+
+        <form method="POST" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="playlist_name" placeholder="Enter playlist name...">
+            </div>
+            <button type="submit" class="btn btn-primary">Generate Rating</button>
+        </form>
+
+        {% if rating %}
+        <div class="rating-box">
+            <p>Your playlist rating:</p>
+            <h2>{{ rating }}/10</h2>
+        </div>
+        {% endif %}
+
+        <!-- Error message display -->
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            Error: {{ error }}
+        </div>
+        {% endif %}
+
     </div>
-    <div class="result-section">
-      10/10
-    </div>
-  </div>
+    <!-- Include Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
