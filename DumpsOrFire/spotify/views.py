@@ -9,8 +9,11 @@ def index(request):
 def home(request):
     rating = None
     if request.method == 'POST':
-        playlist_name = request.POST.get('playlist_name')
-        rating = 7
+        user_input = request.POST.get('user_input')
+        rating = generate_rating.get_track_popularity(user_input)
+    return render(request, 'spotify/home.html', {'rating': rating})
+
+
         # try:
         #     context['rating'] = generate_rating(playlist_name)
         #     raise PlaylistNotFound("Playlist not found :(")
@@ -18,4 +21,3 @@ def home(request):
         #     context['error'] = str(e)
 
     # return render(request, 'spotify/home.html', context)
-    return render(request, 'spotify/home.html', {'rating': rating})

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playlist Rating App</title>
+    <title>Dumps or Fire</title>
     <!-- Include Bootstrap CSS for styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -20,21 +20,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Playlist Rating Generator</h1>
+        <h1>Dumps or Fire</h1>
 
 
         <form method="POST" action="{% url 'home' %}">
             {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" name="playlist_name" placeholder="Enter playlist name...">
+                <input type="text" class="form-control" name="user_input" placeholder="Enter something...">
             </div>
             <button type="submit" class="btn btn-primary">Generate Rating</button>
         </form>
 
         {% if rating %}
         <div class="rating-box">
-            <p>Your playlist rating:</p>
-            <h2>{{ rating }}/10</h2>
+            <p>Popularity Rating:</p>
+            <h2>{{ rating }}/100</h2>
         </div>
         {% endif %}
 
