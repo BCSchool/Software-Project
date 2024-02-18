@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . import generate_rating
 
 # Create your views here.
 

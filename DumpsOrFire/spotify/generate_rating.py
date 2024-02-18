@@ -1,20 +1,23 @@
-import os
 import base64
 from requests import post, get
 import json
-from requests import post
 
-client_id = os.environ.get('SPOTIFY_CLIENT_KEY')
-client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
+import os
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DumpsOrFire.settings')
+django.setup()
+
+from django.conf import settings
+
+client_id = settings.SOCIAL_AUTH_SPOTIFY_KEY
+client_secret = settings.SOCIAL_AUTH_SPOTIFY_SECRET
 
 def get_token():
     """ Get Spotify token to access artist and track info """
     auth_string = client_id + ":" + client_secret
     auth_bytes = auth_string.encode("utf-8")
     auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
-    auth_string = client_id + ":" + client_secret
-    auth_bytes = auth_string.encode("utf-8")
-    auth_base64 = str(base64.b64encode(auth_base64), "utf-8")
 
     url = "https://accounts.spotify.com/api/token"
     headers = {
@@ -127,7 +130,3 @@ print()
 print(f"Artist Popularity: {artist_result["popularity"]}")
 
 print(f"{artist_result['name']}'s Top Tracks Popularity Rating: {avg_popularity:.0f}")
-    result = post(url, headerrs=headers, data=data)
-    json_result = json.loads(result.content)
-    token = json_result["access_token"]
-    return token
