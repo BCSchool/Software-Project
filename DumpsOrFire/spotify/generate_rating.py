@@ -1,11 +1,17 @@
-import os
 import base64
 from requests import post, get
 import json
-from requests import post
 
-client_id = os.environ.get('SPOTIFY_CLIENT_KEY')
-client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
+import os
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DumpsOrFire.settings')
+django.setup()
+
+from django.conf import settings
+
+client_id = settings.SOCIAL_AUTH_SPOTIFY_KEY
+client_secret = settings.SOCIAL_AUTH_SPOTIFY_SECRET
 
 def get_token():
     """ Get Spotify token to access artist and track info """
