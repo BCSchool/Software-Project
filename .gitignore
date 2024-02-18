@@ -1,2 +1,46 @@
-venv
-.venv
+# Python related
+*.py[cod]
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.pyc
+
+# binary
+*.exe
+*.dll
+*.so
+*.o
+*.a
+*.obj
+*.bin
+*.jar
+
+# Django related
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Virtual environment
+venv/
+.venv/
+ENV/
+
+# Frontend related
+node_modules/
+*.log
+*.scssc
+
+# OS related
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# SQLite database file 
+*.sqlite3

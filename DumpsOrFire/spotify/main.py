@@ -1,16 +1,26 @@
 import os
 import base64
+<<<<<<< HEAD
 from requests import post, get
 import json
+=======
+from requests import post
+>>>>>>> 2831ffecf8fe70dc6d09ce03dea3cb7712374c11
 
 client_id = os.environ.get('SPOTIFY_CLIENT_KEY')
 client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
 
 def get_token():
+<<<<<<< HEAD
     """ Get Spotify token to access artist and track info """
     auth_string = client_id + ":" + client_secret
     auth_bytes = auth_string.encode("utf-8")
     auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
+=======
+    auth_string = client_id + ":" + client_secret
+    auth_bytes = auth_string.encode("utf-8")
+    auth_base64 = str(base64.b64encode(auth_base64), "utf-8")
+>>>>>>> 2831ffecf8fe70dc6d09ce03dea3cb7712374c11
 
     url = "https://accounts.spotify.com/api/token"
     headers = {
@@ -19,6 +29,7 @@ def get_token():
     }
 
     data = {"grant_type": "client_credentials"}
+<<<<<<< HEAD
     result = post(url, headers=headers, data=data)
     json_result = json.loads(result.content)
     token = json_result["access_token"]
@@ -123,3 +134,9 @@ print()
 print(f"Artist Popularity: {artist_result["popularity"]}")
 
 print(f"{artist_result['name']}'s Top Tracks Popularity Rating: {avg_popularity:.0f}")
+=======
+    result = post(url, headerrs=headers, data=data)
+    json_result = json.loads(result.content)
+    token = json_result["access_token"]
+    return token
+>>>>>>> 2831ffecf8fe70dc6d09ce03dea3cb7712374c11
