@@ -2,11 +2,14 @@ import base64
 from requests import post, get
 import json
 
-import os
-import django
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DumpsOrFire.settings')
-django.setup()
+####################################
+# I dont thnk these are necessary but not sure
+# import os
+# import django
+#
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DumpsOrFire.settings')
+# django.setup()
+####################################
 
 from django.conf import settings
 
