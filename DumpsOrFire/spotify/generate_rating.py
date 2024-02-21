@@ -114,19 +114,26 @@ for idx, song in enumerate(playlist_tracks):
 
 
 """ Test: Calculate popularity of an artist's top tracks """
-print(f"{artist_result['name']}'s Top Tracks")
-print("--------------------------------------------")
+# print(f"{artist_result['name']}'s Top Tracks")
+# print("--------------------------------------------")
+#
+# for idx, song in enumerate(top_tracks):
+#   avg_popularity += song["popularity"]
+#
+# avg_popularity = avg_popularity/10.0
+#
+# for idx, song in enumerate(top_tracks):
+#     print(f"{idx+1}. {song['name']}")
+#
+# print()
+#
+# print(f"Artist Popularity: {artist_result["popularity"]}")
+#
+# print(f"{artist_result['name']}'s Top Tracks Popularity Rating: {avg_popularity:.0f}")
 
-for idx, song in enumerate(top_tracks):
-  avg_popularity += song["popularity"]
 
-avg_popularity = avg_popularity/10.0
+def get_track_popularity(track_name: str):
+    token = get_token()
+    track_result = search_for_track(token, track_name)
+    return track_result["popularity"]
 
-for idx, song in enumerate(top_tracks):
-    print(f"{idx+1}. {song['name']}")
-
-print()
-
-print(f"Artist Popularity: {artist_result["popularity"]}")
-
-print(f"{artist_result['name']}'s Top Tracks Popularity Rating: {avg_popularity:.0f}")
