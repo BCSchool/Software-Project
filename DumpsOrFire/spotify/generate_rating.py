@@ -15,7 +15,7 @@ import os
 
 # client_id = settings.SOCIAL_AUTH_SPOTIFY_KEY
 # client_secret = settings.SOCIAL_AUTH_SPOTIFY_SECRET
-client_id = os.environ.get('SPOTIFY_CLIENT_ID')
+client_id = os.environ.get('SPOTIFY_CLIENT_KEY')
 client_secret = os.environ.get('SPOTIFY_CLIENT_SECRET')
 
 
