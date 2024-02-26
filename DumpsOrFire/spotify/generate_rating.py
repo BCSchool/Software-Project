@@ -33,7 +33,7 @@ def get_auth_header(token):
 
 def get_track_popularity(track_name: str):
     token = get_token()
-    track_result = search_for_track(token, track_name)
+    track_result = user_search(token, track_name, "track")
     return track_result["popularity"]
 
 
