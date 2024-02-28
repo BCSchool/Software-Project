@@ -18,6 +18,7 @@ def home(request):
     if request.method == 'POST':
         user_input = request.POST.get('user_input')
         if gr.get_track_popularity(user_input) is not None:
+            user_input = ' '
             context['rating'] = gr.get_track_popularity(user_input)
         else:
             context['error'] = f"No result with name {user_input} found."
