@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href = "{% static 'spotify/style.css' %}">
+    {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> {% endcomment %}
     <title>Dumps or Fire</title>
 </head>
 <body>
@@ -21,8 +22,8 @@
             <div class="left-column">
                 <h1>Welcome to Dumps Or Fire!</h1>
                 <p>We take your favorite songs and we determine whether or not your music taste is either <span class="text-1">DUMPS</span> or <span class="text-2">FIRE</span>!
-                    Click the button below to rate your music! ***redirect user to specific part of the webpage, do not need to create multiple html pages***</p>
-                <button>Rate your music</button>
+                    Click the button below to rate your music!</p>
+                <button onclick="location.href= '{% url 'home' %}'">Rate your music</button>
             </div>
         </div>
     </section>
