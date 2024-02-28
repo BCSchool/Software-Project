@@ -38,56 +38,12 @@ def get_track_popularity(track_name: str):
         return None
     return track_result["popularity"]
 
-
-""" def search_for_artist(token, artist_name):
-    # Search for an artist and return items associated with artist
-    url = "https://api.spotify.com/v1/search"
-    headers = get_auth_header(token)
-    query = f"?q={artist_name}&type=artist&limit=1"
-
-    query_url = url + query
-    result = get(query_url, headers=headers)
-    json_result = json.loads(result.content)["artists"]["items"]
-    
-    if len(json_result) == 0:
-        print("No artist with this name exists...")
+def get_track_image(track_name: str):
+    token = get_token()
+    track_result = user_search(token , track_name, "track")
+    if not track_result:
         return None
-    
-    return json_result[0] """
-
-
-""" def search_for_track(token, track_name):
-    # Search for a track and return items associated with track
-    url = "https://api.spotify.com/v1/search"
-    headers = get_auth_header(token)
-    query = f"?q={track_name}&type=track&limit=1"
-
-    query_url = url + query
-    result = get(query_url, headers=headers)
-    json_result = json.loads(result.content)["tracks"]["items"]
-    
-    if len(json_result) == 0:
-        print("No tracks with this name exists...")
-        return None
-    
-    return json_result[0] """
-
-
-""" def search_for_playlist(token, playlist_name):
-    # Search for playlist and return items associated with playlist
-    url = "https://api.spotify.com/v1/search"
-    headers = get_auth_header(token)
-    query = f"?q={playlist_name}&type=playlist&limit=1"
-
-    query_url = url + query
-    result = get(query_url, headers=headers)
-    json_result = json.loads(result.content)["playlists"]["items"]
-    
-    if len(json_result) == 0:
-        print("No playlist with this name exists...")
-        return None
-    
-    return json_result[0] """
+    return track_result["album"]["images"]["url"]
 
 
 def get_songs_by_artist(token, artist_id):
