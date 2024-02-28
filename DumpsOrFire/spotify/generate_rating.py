@@ -32,6 +32,8 @@ def get_auth_header(token):
 
 
 def get_track_popularity(track_name: str):
+    if track_name == "":
+        return None
     token = get_token()
     track_result = user_search(token, track_name, "track")
     if not track_result:
