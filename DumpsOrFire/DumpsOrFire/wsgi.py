@@ -8,6 +8,11 @@ https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/
 """
 
 import os
+import sys
+
+path = '/home/Jolman/DumpsOrFire'
+if path not in sys.path:
+    sys.path.append(path)
 
 from django.core.wsgi import get_wsgi_application
 
