@@ -31,19 +31,18 @@
             <button type="submit" class="btn btn-primary">Generate Rating</button>
         </form>
 
-        {% if rating %}
+        <!-- Error message display -->
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <p>Error: {{ error }}</p>
+        </div>
+        {% else %}
         <div class="rating-box">
             <p>Popularity Rating:</p>
             <h2>{{ rating }}/100</h2>
         </div>
         {% endif %}
 
-        <!-- Error message display -->
-        {% if error %}
-        <div class="alert alert-danger" role="alert">
-            Error: {{ error }}
-        </div>
-        {% endif %}
 
     </div>
     <!-- Include Bootstrap JS and its dependencies -->
