@@ -31,9 +31,6 @@ def get_auth_header(token):
     return {"Authorization": "Bearer " + token}
 
 
-class ResultNotFound(Exception):
-    pass
-
 def get_track_popularity(track_name: str):
     token = get_token()
     track_result = user_search(token, track_name, "track")

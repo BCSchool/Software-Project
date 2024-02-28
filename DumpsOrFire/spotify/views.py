@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from . import generate_rating as gr
 
-class ResultNotFound(Exception):
-    pass
-
 # Create your views here.
 
 def index(request):
