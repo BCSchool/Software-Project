@@ -45,7 +45,7 @@ def get_track_image(track_name: str):
     track_result = user_search(token , track_name, "track")
     if not track_result:
         return None
-    return track_result["album"]["images"]["url"]
+    return track_result["album"]["images"][0]["url"]
 
 
 def get_songs_by_artist(token, artist_id):
