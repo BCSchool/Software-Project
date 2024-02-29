@@ -80,14 +80,15 @@ nav a:hover {
 
 button {
     margin: 18px;
-    padding: 15px;
-    font-size: 15px;
+    padding: 11px;
+    font-size: 20px;
+
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     border: none;
     color: white;
     background: black;
     cursor: pointer;
-    border-radius: 75px;
 
     transition: transform 133ms ease-in-out;
 }
@@ -109,4 +110,12 @@ button:hover {
 
 .form-group {
     margin-top: 20px;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.image-container img {
+    display: inline-block;
 }
