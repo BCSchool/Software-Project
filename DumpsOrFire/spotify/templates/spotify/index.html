@@ -1,30 +1,51 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href = "{% static 'spotify/style.css' %}">
+    <link rel="stylesheet" href="{% static 'spotify/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Dumps or Fire</title>
 </head>
+
 <body>
-    <nav>
+    {% comment %} <nav>
         <div class="title">Dumps Or Fire</div>
         <div class="items">
             <a href="/">Home</a>
             <a href="/">About</a>
             <a href="/">Rate</a>
         </div>
+    </nav> {% endcomment %}
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2a2929">
+        <a class="navbar-brand" href="{% url 'index' %}">Dumps Or Fire</a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Rate</a>
+            </li>
+        </ul>
     </nav>
+
     <section class="heading">
         <div class="container">
             <div class="left-column">
                 <h1>Welcome to Dumps Or Fire!</h1>
-                <p>We take your favorite songs and we determine whether or not your music taste is either <span class="text-1">DUMPS</span> or <span class="text-2">FIRE</span>!
-                    Click the button below to rate your music! ***redirect user to specific part of the webpage, do not need to create multiple html pages***</p>
-                <button>Rate your music</button>
+                <p>We take your favorite songs and we determine whether or not your music taste is either <span
+                        class="text-1">DUMPS</span> or <span class="text-2">FIRE</span>!
+                    Click the button below to rate your music!</p>
+                <button onclick="location.href= '{% url 'home' %}'">Rate your music</button>
             </div>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
