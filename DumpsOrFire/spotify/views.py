@@ -7,7 +7,7 @@ from . import format_rating as fr
 def index(request):
     return render(request, 'spotify/index.html')
 
-def home(request):
+def rate(request):
     context = {}
     if request.method == 'POST':
         user_input = request.POST.get('user_input')
@@ -18,4 +18,4 @@ def home(request):
         else:
             context['error'] = f"No result with name {user_input} found."
 
-    return render(request, 'spotify/home.html', context)
+    return render(request, 'spotify/rate.html', context)

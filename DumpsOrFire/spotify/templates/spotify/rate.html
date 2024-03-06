@@ -34,7 +34,7 @@
     </nav>
 
     <div class="container">
-        <form method="POST" action="{% url 'home' %}">
+        <form method="POST" action="{% url 'rate' %}">
             {% csrf_token %}
             <div class="form-group">
                 <input type="text" class="form-control" name="user_input" placeholder="Enter something..." autofocus>
