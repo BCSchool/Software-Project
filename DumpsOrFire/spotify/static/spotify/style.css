@@ -118,4 +118,6 @@ button:hover {
 
 .image-container img {
     display: inline-block;
+    width: 40%;
+    border: 2px solid black;
 }
