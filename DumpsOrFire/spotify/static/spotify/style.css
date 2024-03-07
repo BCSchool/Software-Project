@@ -3,6 +3,11 @@
     src: url("Gotham.otf");
 }
 
+@font-face {
+    font-family: 'circular';
+    src: url("circular-std-2.ttf")
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
