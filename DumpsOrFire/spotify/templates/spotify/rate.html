@@ -28,10 +28,22 @@
         <form method="POST" action="{% url 'rate' %}">
             {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" name="user_input" placeholder="Enter something..." autofocus>
+                <input type="text" class="form-control" name="user_input" placeholder="Enter a {{ search_type }}..." autofocus>
             </div>
             <button type="submit" class="button">Generate Rating</button>
         </form>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Change Search Type
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" id="track" href="#">Search by track</a>
+            <a class="dropdown-item" id="album" href="#">Search by album</a>
+            <a class="dropdown-item" id="playlist" href="#">Search by playlist</a>
+          </div>
+
+        </div>
 
         <!-- Error message display -->
         {% if error %}
@@ -53,7 +65,8 @@
     </div>
     <!-- Include Bootstrap JS and its dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
