@@ -10,10 +10,6 @@ def index(request):
 def rate(request):
     context = {}
     context['search_type'] = 'track'
-    # if request.method == 'GET':
-    #     search_type = request.GET.get('search_type', 'track')
-    #     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-    #         return JsonResponse({'search_type': search_type})
     if request.method == 'POST':
         user_input = request.POST.get('user_input')
         search_type = request.POST.get('search_type', 'track')

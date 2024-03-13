@@ -28,19 +28,22 @@
         <form method="POST" action="{% url 'rate' %}">
             {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" name="user_input" placeholder="Enter a {{ search_type }}..." autofocus>
+                <input type="text" class="form-control" id="searchInput" name="user_input" placeholder="Enter a {{ search_type }}..." autofocus>
             </div>
             <button type="submit" class="button">Generate Rating</button>
         </form>
 
+        <!-- dropdown menu -->
         <div class="dropdown">
+
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Change Search Type
           </button>
+          <!-- dropdown buttons -->
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" id="track" href="#">Search by track</a>
-            <a class="dropdown-item" id="album" href="#">Search by album</a>
-            <a class="dropdown-item" id="playlist" href="#">Search by playlist</a>
+            <a class="dropdown-item" id="track" data-search-type="track" href="#">Search by track</a>
+            <a class="dropdown-item" id="album" data-search-type="album" href="#">Search by album</a>
+            <a class="dropdown-item" id="playlist" data-search-type="artist" href="#">Search by playlist</a>
           </div>
 
         </div>
@@ -68,6 +71,18 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
 
+    <!-- for dropdown menu -->
+    <script>
+      $(document).ready(function() {
+        $('.dropdown-item').click(function(e) {
+          e.preventDefault();
+          var searchType = $(this).data('search-type');
+          $('#searchInput').attr('placeholder', 'Enter a ' + searchType + '...');
+        });
+      });
+    </script>
+
+</body>
 </html>
+
