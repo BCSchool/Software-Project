@@ -1,4 +1,5 @@
 import json
+from django.conf.urls.static import static
 
 def assign_letter_grade(pop_rating = 0):
     r = pop_rating
@@ -21,10 +22,12 @@ def assign_letter_grade(pop_rating = 0):
         return 'Z'
     
 def get_description(letter_rating):
-    with open("/spotify/static/spotify/descriptions.json") as json_file:
-        data = json.load(json_file)
+    json_data = open('static/descriptions.json')
+    data = json.load(json_data)
 
-    print(f"{letter_rating} description: ", data[letter_rating][0]["Track"])
+    json_data.close()
+
+    return data[letter_rating]['Track']
 
 def format_rating(generated_rating = 0):
     return get_description(assign_letter_grade(generated_rating))
