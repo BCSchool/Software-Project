@@ -1,4 +1,3 @@
-import generate_rating
 import json
 
 def assign_letter_grade(pop_rating = 0):
@@ -22,7 +21,7 @@ def assign_letter_grade(pop_rating = 0):
         return 'Z'
     
 def get_description(letter_rating):
-    with open('descriptions.json') as json_file:
+    with open("/spotify/static/spotify/descriptions.json") as json_file:
         data = json.load(json_file)
 
     print(f"{letter_rating} description: ", data[letter_rating][0]["Track"])
