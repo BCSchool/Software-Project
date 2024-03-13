@@ -20,6 +20,7 @@ def rate(request):
         if gr.get_track_popularity(user_input) is not None:
             context['rating'] = gr.get_track_popularity(user_input)
             context['description'] =  fr.format_rating(gr.get_track_popularity(user_input))
+            # context['rating_reaction'] =  fr.get_rating_reaction(letter_rating='A')
             context['image'] = gr.get_track_image(user_input)
         else:
             context['error'] = f"No result with name {user_input} found."

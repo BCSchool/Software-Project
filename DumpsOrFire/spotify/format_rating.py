@@ -1,5 +1,5 @@
 import json
-from django.conf.urls.static import static
+# import rating_reaction
 
 def assign_letter_grade(pop_rating = 0):
     r = pop_rating
@@ -28,6 +28,9 @@ def get_description(letter_rating):
     json_data.close()
 
     return data[letter_rating]['Track']
+
+def get_rating_reaction(letter_rating):
+    return "hot.png"
 
 def format_rating(generated_rating = 0):
     return get_description(assign_letter_grade(generated_rating))
