@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from . import generate_rating as gr
+
 # from django.http import JsonResponse
+
+from . import format_rating as fr
 
 # Create your views here.
 
@@ -20,6 +23,7 @@ def rate(request):
         context['search_type'] = search_type
         if gr.get_track_popularity(user_input) is not None:
             context['rating'] = gr.get_track_popularity(user_input)
+            context['description'] =  fr.format_rating(gr.get_track_popularity(user_input))
             context['image'] = gr.get_track_image(user_input)
         else:
             context['error'] = f"No result with name {user_input} found."
