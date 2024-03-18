@@ -47,6 +47,20 @@ def get_track_image(track_name: str):
         return None
     return track_result["album"]["images"][0]["url"]
 
+def get_album_popularity(album_name: str):
+    if album_name == "":
+        return None
+    token = get_token()
+    album_result = user_search(token, album_name, "album")
+    if not album_result:
+        return None
+    return album_result["popularity"]
+
+def get_playlist_popularity(playlist_name: str):
+    token = get_token()
+    playlist_result = user_search(token, playlist_name, "playlist")
+    ...
+
 
 def get_songs_by_artist(token, artist_id):
     """ Return top tracks from given artist """
@@ -72,6 +86,8 @@ def user_search(token, track_name, search_type = "track"):
         return None
     
     return json_result[0]
+
+
 
 
 token = get_token()

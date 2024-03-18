@@ -15,13 +15,18 @@ def rate(request):
     context['search_type'] = 'track'
     if request.method == 'POST':
         user_input = request.POST.get('user_input')
-        search_type = request.POST.get('search_type', 'track')
+        search_type = request.POST.get('search_type', 'album')
         context['search_type'] = search_type
         if gr.get_track_popularity(user_input) is not None:
-            context['rating'] = gr.get_track_popularity(user_input)
-            context['description'] =  fr.format_rating(gr.get_track_popularity(user_input))
-            # context['rating_reaction'] =  fr.get_rating_reaction(letter_rating='A')
-            context['image'] = gr.get_track_image(user_input)
+            if search_type == 'track':
+                context['rating'] = gr.get_track_popularity(user_input)
+                context['description'] =  fr.format_rating(gr.get_track_popularity(user_input))
+                # context['rating_reaction'] =  fr.get_rating_reaction(letter_rating='A')
+                context['image'] = gr.get_track_image(user_input)
+
+            elif search_type == 'album':
+                context['rating'] = gr.get_album_popularity(user_input)
+                context['description'] = "yo"
         else:
             context['error'] = f"No result with name {user_input} found."
 
