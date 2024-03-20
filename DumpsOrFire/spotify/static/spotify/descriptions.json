@@ -1,0 +1,41 @@
+{
+    "A": 
+        {
+            "Track" : "Not bad. This track is super popular right now so it's definitely good, but it's pretty basic."
+        }
+    ,
+    "B": 
+        {
+            "Track": "This track is great! Although it's not the most popular song, a good amount of listeners think this track smacks."
+        }
+    ,
+    "C": 
+        {
+            "Track": "This track is nice! It's popularity shows that you must have a unique taste in music."
+        }
+    ,
+    "D":
+        {
+            "Track": "This track could be better, however it's most likely worth a listen!"
+        }
+    ,
+    "F":
+        {
+            "Track": "This song is not that popular and it leaves a lot to be desired."
+        }
+    ,
+    "G":
+        {
+            "Track": "This is unpopular for a reason... it's probably not worth listening to."
+        }
+    ,
+    "H":
+        {
+            "Track": "This song is straight trash, maybe try listening to Spotify's top 50 for better inspiration."
+        }
+    ,
+    "Z":
+        {
+            "Track": "..."
+        }
+}
