@@ -61,14 +61,21 @@ def get_playlist_popularity(playlist_name: str):
     playlist_result = user_search(token, playlist_name, "playlist")
     ...
 
+def get_track_name(track_name: str):
+    token = get_token()
+    track_result = user_search(token , track_name, "track")
+    name = track_result['name'] + ' - ' + track_result['artists'][0]['name']
+    if not track_result:
+        return None
+    return name
 
-def get_songs_by_artist(token, artist_id):
-    """ Return top tracks from given artist """
-    url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks?country=US"
-    headers = get_auth_header(token)
-    result = get(url, headers=headers)
-    json_result = json.loads(result.content)["tracks"]
-    return json_result
+# def get_songs_by_artist(token, artist_id):
+#     """ Return top tracks from given artist """
+#     url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks?country=US"
+#     headers = get_auth_header(token)
+#     result = get(url, headers=headers)
+#     json_result = json.loads(result.content)["tracks"]
+#     return json_result
 
 
 def user_search(token, track_name, search_type = "track"):

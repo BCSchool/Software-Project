@@ -1,4 +1,7 @@
 import json
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
+
 # import rating_reaction
 
 def assign_letter_grade(pop_rating = 0):
@@ -22,7 +25,10 @@ def assign_letter_grade(pop_rating = 0):
         return 'Z'
     
 def get_description(letter_rating):
-    json_data = open('static/descriptions.json')
+    fs = FileSystemStorage(location=settings.STATIC_ROOT)
+    file_path = fs.path('spotify/descriptions.json')
+
+    json_data = open(file_path, 'r')
     data = json.load(json_data)
 
     json_data.close()
