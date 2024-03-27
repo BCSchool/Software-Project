@@ -1,11 +1,15 @@
 import base64
 from requests import post, get
 import json
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
 from django.conf import settings
 
 client_id = settings.SOCIAL_AUTH_SPOTIFY_ID
 client_secret = settings.SOCIAL_AUTH_SPOTIFY_SECRET
+client_credentials_manager = SpotifyClientCredentials(client_id, client_secret)
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 
 def get_token():
@@ -98,3 +102,24 @@ def user_search(token, track_name, search_type = "track"):
 
 
 token = get_token()
+
+
+def get_tp2(query: str):
+    if query == "":
+        return None
+    results = sp.search(q=query, type='track', limit=1)
+    if results['tracks']['items']:
+        track = results['tracks']['items'][0]
+        return track['popularity']
+    else:
+        return None
+
+def get_album_pop(query: str):
+    if query == "":
+        return None
+    results = sp.search(q=query, type='album', limit=1)
+    if results['albums']['items']:
+        track = results['albums']['items'][0]
+        return track['popularity']
+    else:
+        return None
