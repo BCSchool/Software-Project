@@ -15,11 +15,16 @@ def rate(request):
     if request.method == 'POST':
         '''Get user input and change search type text in search box'''
         user_input = request.POST.get('user_input')
-        search_type = request.POST.get('search_type', 'album')
+        search_type = request.POST.get('search_type')
+
+        # set default search type if none provided
+        if not search_type:
+            search_type = 'track'
+
         context['search_type'] = search_type
 
         if search_type == 'track':
-            '''Track Search'''
+            # track search
             if gr.get_track_popularity(user_input) is not None:
                 '''get rating from api and description from json file'''
                 context['rating'] = gr.get_track_popularity(user_input)
@@ -31,9 +36,11 @@ def rate(request):
                 context['error'] = f"No result with name {user_input} found."
 
         elif search_type == 'album':
-            '''Album Search'''
+            # album search
             if gr.get_album_popularity(user_input) is not None:
                 context['rating'] = gr.get_album_popularity(user_input)
                 context['description'] =  fr.format_rating(gr.get_album_popularity(user_input))
+                context['image'] = gr.get_album_image(user_input)
+                context['name'] = gr.get_album_name(user_input)
 
     return render(request, 'spotify/rate.html', context)
