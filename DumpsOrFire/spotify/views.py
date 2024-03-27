@@ -44,7 +44,7 @@ def rate(request):
             if gr.get_album_popularity(user_input) is not None:
                 context['rating'] = gr.get_album_popularity(user_input)
 
-                desc, img = fr.format_rating(gr.get_track_popularity(user_input))
+                desc, img = fr.format_rating(gr.get_album_popularity(user_input))
 
                 context['description'] =  desc
                 context['reaction'] = f"static/spotify/rating_reaction/{img}"

@@ -81,9 +81,9 @@ def get_album_popularity(album_name: str):
 
     query_url = url + query
     result = get(query_url, headers=headers)
-    json_result = json.loads(result.content)['popularity']
+    json_result = json.loads(result.content)
 
-    return json_result
+    return json_result['popularity']
 
 
 def get_album_image(album_name: str):
