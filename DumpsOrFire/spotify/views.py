@@ -19,8 +19,9 @@ def rate(request):
         context['search_type'] = search_type
         if gr.get_track_popularity(user_input) is not None:
             context['rating'] = gr.get_track_popularity(user_input)
-            context['description'] =  fr.format_rating(gr.get_track_popularity(user_input))
-            # context['rating_reaction'] =  fr.get_rating_reaction(letter_rating='A')
+            desc, img = fr.format_rating(gr.get_track_popularity(user_input))
+            context['description'] =  desc
+            context['reaction'] = f"static/spotify/rating_reaction/{img}"
             context['image'] = gr.get_track_image(user_input)
             context['name'] = gr.get_track_name(user_input)
         else:
