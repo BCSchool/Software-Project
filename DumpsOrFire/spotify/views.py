@@ -19,7 +19,7 @@ def rate(request):
 
         # set default search type if none provided
         if not search_type:
-            search_type = 'track'
+            search_type = 'album'
 
         context['search_type'] = search_type
 
