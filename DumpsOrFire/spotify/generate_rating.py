@@ -44,12 +44,6 @@ def get_track_popularity(track_name: str):
         return None
     return track_result["popularity"]
 
-def get_track_image(track_name: str):
-    token = get_token()
-    track_result = user_search(token , track_name, "track")
-    if not track_result:
-        return None
-    return track_result["album"]["images"][0]["url"]
 
 def get_album_popularity(album_name: str):
     if album_name == "":
@@ -65,6 +59,8 @@ def get_playlist_popularity(playlist_name: str):
     playlist_result = user_search(token, playlist_name, "playlist")
     ...
 
+'''get track name and image'''
+
 def get_track_name(track_name: str):
     token = get_token()
     track_result = user_search(token , track_name, "track")
@@ -72,6 +68,13 @@ def get_track_name(track_name: str):
     if not track_result:
         return None
     return name
+
+def get_track_image(track_name: str):
+    token = get_token()
+    track_result = user_search(token , track_name, "track")
+    if not track_result:
+        return None
+    return track_result["album"]["images"][0]["url"]
 
 # def get_songs_by_artist(token, artist_id):
 #     """ Return top tracks from given artist """
@@ -98,11 +101,27 @@ def user_search(token, track_name, search_type = "track"):
     
     return json_result[0]
 
+# token = get_token()
+
+'''album image and name'''
+
+def get_album_image(album_name: str):
+    token = get_token()
+    album_result = user_search(token, album_name, "album")
+    if not album_result:
+        return None
+    return album_result["images"][0]["url"]
+
+def get_album_name(album_name: str):
+    token = get_token()
+    album_result = user_search(token, album_name, "album")
+    if not album_result:
+        return None
+    return album_result["name"]
 
 
 
-token = get_token()
-
+'''Spotipy functions below'''
 
 def get_tp2(query: str):
     if query == "":
@@ -110,6 +129,7 @@ def get_tp2(query: str):
     results = sp.search(q=query, type='track', limit=1)
     if results['tracks']['items']:
         track = results['tracks']['items'][0]
+        print(track)
         return track['popularity']
     else:
         return None
@@ -119,7 +139,8 @@ def get_album_pop(query: str):
         return None
     results = sp.search(q=query, type='album', limit=1)
     if results['albums']['items']:
-        track = results['albums']['items'][0]
-        return track['popularity']
+        album = results['albums']['items'][0]
+        print(album)
+        return album['popularity']
     else:
         return None
