@@ -1,41 +1,49 @@
 {
     "A": 
         {
-            "Track" : "Not bad. This track is super popular right now so it's definitely good, but it's pretty basic."
+            "Track" : "Not bad. This track is super popular right now so it's definitely good, but it's pretty basic.",
+            "Reaction" : "hot.png"
         }
     ,
     "B": 
         {
-            "Track": "This track is great! Although it's not the most popular song, a good amount of listeners think this track smacks."
+            "Track": "This track is great! Although it's not the most popular song, a good amount of listeners think this track smacks.",
+            "Reaction" : "fire.png"
         }
     ,
     "C": 
         {
-            "Track": "This track is nice! It's popularity shows that you must have a unique taste in music."
+            "Track": "This track is nice! It's popularity shows that you must have a unique taste in music.",
+            "Reaction" : "exquisite.png"
         }
     ,
     "D":
         {
-            "Track": "This track could be better, however it's most likely worth a listen!"
+            "Track": "This track could be better, however it's most likely worth a listen!",
+            "Reaction" : "nice.png"
         }
     ,
     "F":
         {
-            "Track": "This song is not that popular and it leaves a lot to be desired."
+            "Track": "This song is not that popular and it leaves a lot to be desired.",
+            "Reaction" : "boring.png"
         }
     ,
     "G":
         {
-            "Track": "This is unpopular for a reason... it's probably not worth listening to."
+            "Track": "This is unpopular for a reason... it's probably not worth listening to.",
+            "Reaction" : "unimpressed.png"
         }
     ,
     "H":
         {
-            "Track": "This song is straight trash, maybe try listening to Spotify's top 50 for better inspiration."
+            "Track": "This song is straight trash, maybe try listening to Spotify's top 50 for better inspiration.",
+            "Reaction" : "bruh.png"
         }
     ,
     "Z":
         {
-            "Track": "..."
+            "Track": "...",
+            "Reaction" : "what.png"
         }
 }

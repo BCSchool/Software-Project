@@ -33,10 +33,10 @@ def get_description(letter_rating):
 
     json_data.close()
 
-    return data[letter_rating]['Track']
+    desc = data[letter_rating]['Track']
+    img = data[letter_rating]['Reaction']
 
-def get_rating_reaction(letter_rating):
-    return "hot.png"
+    return desc, img
 
 def format_rating(generated_rating = 0):
     return get_description(assign_letter_grade(generated_rating))

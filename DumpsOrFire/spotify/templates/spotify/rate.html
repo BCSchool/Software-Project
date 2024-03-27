@@ -30,11 +30,19 @@
         <form method="POST" action="{% url 'rate' %}">
             {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" id="searchInput" name="user_input" placeholder="Enter a {{ search_type }}..." autofocus>
+                <input type="text" class="form-control" id="searchInput" name="user_input" placeholder="Enter a {% if search_type %}{{ search_type }}{% else %}track{% endif %}..." autofocus>
             </div>
             <button type="submit" class="btn btn-secondary">Generate Rating</button>
         </form>
         <br>
+
+
+        <!-- hidden radio buttons for search types-->
+        <div style="display: none;">
+            <input type="radio" name="search_type" value="track", id="track-radio" {% if search_type == 'track' %} checked {% endif %}>
+            <input type="radio" name="search_type" value="album", id="album-radio" {% if search_type == 'album' %} checked {% endif %}>
+            <input type="radio" name="search_type" value="playlist", id="playlist-radio" {% if search_type == 'playlist' %} checked {% endif %}>
+        </div>
 
         <!-- dropdown menu -->
         <div class="dropdown">
@@ -46,7 +54,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" id="track" data-search-type="track" href="#">Search by track</a>
             <a class="dropdown-item" id="album" data-search-type="album" href="#">Search by album</a>
-            <a class="dropdown-item" id="playlist" data-search-type="artist" href="#">Search by playlist</a>
+            <a class="dropdown-item" id="playlist" data-search-type="playlist" href="#">Search by playlist</a>
           </div>
 
         </div>
@@ -60,7 +68,7 @@
         <div class="rating-box">
             <p><span style="font-family: 'circular'">Popularity Rating:</span></p>
             <h2>{{ rating }}/100</h2>
-            <!-- <br><img src={} alt="alt text"> -->
+            <br><img src={{ reaction }} alt="alt text">
             
             <h2 style="font-family: 'circular'">{{ description }}</h2>
         </div>
@@ -86,6 +94,7 @@
           e.preventDefault();
           var searchType = $(this).data('search-type');
           $('#searchInput').attr('placeholder', 'Enter a ' + searchType + '...');
+          $('input[name="search_type"][value="' + searchType + '"]').prop('checked', true);
         });
       });
     </script>
