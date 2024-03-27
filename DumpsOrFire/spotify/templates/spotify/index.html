@@ -1,43 +1,52 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'spotify/style.css' %}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dumps Or Fire</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Dumps or Fire</title>
-</head>
+    <link href="{% static 'spotify/style2.css' %}" rel="stylesheet">
+  </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2a2929">
-        <a class="navbar-brand" href="{% url 'index' %}">Dumps Or Fire</a>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'rate' %}">Rate</a>
-            </li>
-        </ul>
-    </nav>
+  <!-- Top header and nav bar -->
+  <body class="text-center">
 
-    <section class="heading">
-        <div class="container">
-            <div class="left-column">
-                <h1>Welcome to Dumps Or Fire!</h1>
-                <p>We take your favorite songs and we determine whether or not your music taste is either <span
-                        class="text-1">DUMPS</span> or <span class="text-2">FIRE</span>! *Ever wonder which tracks are setting the music scene on fire? What songs that you listen to
-                        are on top? We've got you covered!
-                    Click the button below to rate your music</p>
-                <button onclick="location.href= '{% url 'rate' %}'">Rate your music</button>
-            </div>
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="header mb-auto">
+        <div class="inner">
+          <h3 class="header-top">Dumps Or Fire</h3>
+          <nav class="nav nav-bar justify-content-center">
+            <a class="nav-link active" href="{% url 'index' %}">Home</a>
+            <a class="nav-link" href="{% url 'rate' %}">Rate</a>
+          </nav>
         </div>
-    </section>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Welcome to Dumps Or Fire!</h1>
+        <p class="lead">Ever wonder which tracks are setting the music scene on fire? What songs that you
+            listen to are on top? We got you covered! We take your favorite songs and determine whether or not your music is either <span
+            class="text-1">DUMPS</span> or <span class="text-2">FIRE</span>!</p>
+        <p class="lead">
+          <a href="{% url 'rate' %}" class="btn btn-lg btn-secondary">Rate your music</a>
+        </p>
+      </main>
+
+      <footer class="footer mt-auto">
+        <div class="inner">
+          <p>Created by Joshua Holman, Brandon Cobb, and Jarred Siriban</p>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>
