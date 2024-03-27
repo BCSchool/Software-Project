@@ -28,10 +28,18 @@
         <form method="POST" action="{% url 'rate' %}">
             {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" id="searchInput" name="user_input" placeholder="Enter a {{ search_type }}..." autofocus>
+                <input type="text" class="form-control" id="searchInput" name="user_input" placeholder="Enter a {% if search_type %}{{ search_type }}{% else %}track{% endif %}..." autofocus>
             </div>
             <button type="submit" class="button">Generate Rating</button>
         </form>
+
+
+        <!-- hidden radio buttons for search types-->
+        <div style="display: none;">
+            <input type="radio" name="search_type" value="track", id="track-radio" {% if search_type == 'track' %} checked {% endif %}>
+            <input type="radio" name="search_type" value="album", id="album-radio" {% if search_type == 'album' %} checked {% endif %}>
+            <input type="radio" name="search_type" value="playlist", id="playlist-radio" {% if search_type == 'playlist' %} checked {% endif %}>
+        </div>
 
         <!-- dropdown menu -->
         <div class="dropdown">
@@ -43,7 +51,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" id="track" data-search-type="track" href="#">Search by track</a>
             <a class="dropdown-item" id="album" data-search-type="album" href="#">Search by album</a>
-            <a class="dropdown-item" id="playlist" data-search-type="artist" href="#">Search by playlist</a>
+            <a class="dropdown-item" id="playlist" data-search-type="playlist" href="#">Search by playlist</a>
           </div>
 
         </div>
@@ -83,6 +91,7 @@
           e.preventDefault();
           var searchType = $(this).data('search-type');
           $('#searchInput').attr('placeholder', 'Enter a ' + searchType + '...');
+          $('input[name="search_type"][value="' + searchType + '"]').prop('checked', true);
         });
       });
     </script>
