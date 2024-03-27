@@ -22,23 +22,18 @@ def rate(request):
             search_type = 'album'
 
         context['search_type'] = search_type
-        if gr.get_track_popularity(user_input) is not None:
-            context['rating'] = gr.get_track_popularity(user_input)
-            desc, img = fr.format_rating(gr.get_track_popularity(user_input))
-            context['description'] =  desc
-            context['reaction'] = f"static/spotify/rating_reaction/{img}"
-            context['image'] = gr.get_track_image(user_input)
-            context['name'] = gr.get_track_name(user_input)
-        else:
-            context['error'] = f"No result with name {user_input} found."
 
         if search_type == 'track':
             # track search
             if gr.get_track_popularity(user_input) is not None:
                 '''get rating from api and description from json file'''
                 context['rating'] = gr.get_track_popularity(user_input)
-                context['description'] =  fr.format_rating(gr.get_track_popularity(user_input))
-                # context['rating_reaction'] =  fr.get_rating_reaction(letter_rating='A')
+
+                desc, img = fr.format_rating(gr.get_track_popularity(user_input))
+
+                context['description'] =  desc
+                context['reaction'] = f"static/spotify/rating_reaction/{img}"
+
                 context['image'] = gr.get_track_image(user_input)
                 context['name'] = gr.get_track_name(user_input)
             else:
@@ -48,7 +43,12 @@ def rate(request):
             # album search
             if gr.get_album_popularity(user_input) is not None:
                 context['rating'] = gr.get_album_popularity(user_input)
-                context['description'] =  fr.format_rating(gr.get_album_popularity(user_input))
+
+                desc, img = fr.format_rating(gr.get_track_popularity(user_input))
+
+                context['description'] =  desc
+                context['reaction'] = f"static/spotify/rating_reaction/{img}"
+
                 context['image'] = gr.get_album_image(user_input)
                 context['name'] = gr.get_album_name(user_input)
 
